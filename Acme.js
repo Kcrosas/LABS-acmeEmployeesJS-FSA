@@ -26,12 +26,17 @@ Notes: If employee has a manager, then start loop from 0 to employee's managerID
 
 5. Generate a management tree: 
 generateManagementTree
-////given a list of employees, generate a tree like structure for the employees, starting with the employee who has no manager. Each employee will have a reports property which is an array of the employees who report directly to them.
+////given a list of employees, generate a tree like structure for the employees, starting with the employee who has no manager. 
+///Not sure on how to do this object in array in another object etc...Will have to do some planning
 
 
 6. Display management tree previously generated
 displayManagementTree
 //given a tree of employees, generate a display which displays the hierarchy
+//Plan if managerid = undefined, add no dashes 
+//if manager id = 1, add 1 dash + name to string variable  
+//repeat for all with manager ids 
+//add
 
 
 */
