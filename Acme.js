@@ -108,10 +108,11 @@ Notes: If employee has a manager, then start loop from 0 to employee's managerID
 
 function findManagementChain(search, someArray) {
   const tree = [];
+  let treeObject = {};
+  let reports = {};
   for (let i = 0; i < someArray.length; i++) {
     if (someArray[i].name === search) {
       let limiter = someArray[i].managerId;
-
       while (limiter > 0) {
         someArray.find((o, x) => {
           if (o.id === limiter) {
@@ -121,8 +122,15 @@ function findManagementChain(search, someArray) {
         });
       }
     }
-    console.log(tree);
   }
+  let limits = tree.length;
+  while (limits >= 0) {
+    reports = tree[limits];
+    treeObject = Object.assign({ treeObject }, { reports });
+    console.log(limits);
+    limits--;
+  }
+  console.log(treeObject);
 }
 
 //tree.reports = someArray[i];
