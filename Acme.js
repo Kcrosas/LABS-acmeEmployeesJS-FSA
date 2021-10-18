@@ -18,7 +18,7 @@ findManagerFor
 findCoworkersFor
 //given an employee and a list of employees, return the employees who report to the same manager
 
-4. Find management chain: 
+[[[4. Find management chain: 
 findManagementChain
 //given an employee and a list of employees, return a the management chain for that employee. The management chain starts from the employee with no manager with the passed in employees manager 
 Notes: If employee has a manager, then start loop from 0 to employee's managerID to find any searches. Then reverse the array. 
@@ -103,9 +103,6 @@ function findCoworkersFor(search, someArray) {
 
 findCoworkersFor("larry", employees);
 
-/*given an employee and a list of employees, return a the management chain for that employee. The management chain starts from the employee with no manager with the passed in employees manager 
-Notes: If employee has a manager, then start loop from 0 to employee's managerID to find any searches. Then reverse the array. */
-
 function findManagementChain(search, someArray) {
   const tree = [];
   let treeObject = {};
@@ -123,12 +120,14 @@ function findManagementChain(search, someArray) {
       }
     }
   }
+  /*
+  This was an attempt on trying to create the tree structure for the next function but it does not work 
   let limits = tree.length;
   while (limits >= 0) {
     reports = tree[limits];
     treeObject = Object.assign({ treeObject }, { reports });
     console.log(limits);
     limits--;
-  }
-  console.log(tree);
+  }*/
+  return tree.reverse();
 }
