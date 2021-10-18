@@ -21,6 +21,8 @@ findCoworkersFor
 4. Find management chain: 
 findManagementChain
 //given an employee and a list of employees, return a the management chain for that employee. The management chain starts from the employee with no manager with the passed in employees manager 
+Notes: If employee has a manager, then start loop from 0 to employee's managerID to find any searches. Then reverse the array. 
+
 
 5. Generate a management tree: 
 generateManagementTree
@@ -100,3 +102,18 @@ function findCoworkersFor(search, someArray) {
 }
 
 findCoworkersFor("larry", employees);
+
+/*given an employee and a list of employees, return a the management chain for that employee. The management chain starts from the employee with no manager with the passed in employees manager 
+Notes: If employee has a manager, then start loop from 0 to employee's managerID to find any searches. Then reverse the array. */
+
+function findManagementChain(search, someArray) {
+  const tree = {};
+  for (let i = 0; i < someArray.length; i++) {
+    if (someArray[i].name === search) {
+      const limiter = someArray[i].managerId;
+    }
+  }
+  console.log(tree);
+}
+
+//tree.reports = someArray[i];
