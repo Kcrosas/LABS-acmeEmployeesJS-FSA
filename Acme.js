@@ -117,7 +117,7 @@ function findManagementChain(search, someArray) {
         someArray.find((o, x) => {
           if (o.id === limiter) {
             tree.push(someArray[x]);
-            limiter--;
+            limiter = o.managerId;
           }
         });
       }
