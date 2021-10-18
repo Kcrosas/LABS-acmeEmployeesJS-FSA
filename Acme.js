@@ -107,16 +107,22 @@ findCoworkersFor("larry", employees);
 Notes: If employee has a manager, then start loop from 0 to employee's managerID to find any searches. Then reverse the array. */
 
 function findManagementChain(search, someArray) {
-  const tree = {};
+  const tree = [];
   for (let i = 0; i < someArray.length; i++) {
     if (someArray[i].name === search) {
-      const limiter = someArray[i].managerId;
-      for (let j = limiter; j >= 0 ; j--){
-          if (someArray[j].)
+      let limiter = someArray[i].managerId;
+
+      while (limiter > 0) {
+        someArray.find((o, x) => {
+          if (o.id === limiter) {
+            tree.push(someArray[x]);
+            limiter--;
+          }
+        });
       }
     }
+    console.log(tree);
   }
-  console.log(tree);
 }
 
 //tree.reports = someArray[i];
