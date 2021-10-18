@@ -130,7 +130,5 @@ function findManagementChain(search, someArray) {
     console.log(limits);
     limits--;
   }
-  console.log(treeObject);
+  console.log(tree);
 }
-
-//tree.reports = someArray[i];
