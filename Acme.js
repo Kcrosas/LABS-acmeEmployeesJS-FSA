@@ -111,6 +111,9 @@ function findManagementChain(search, someArray) {
   for (let i = 0; i < someArray.length; i++) {
     if (someArray[i].name === search) {
       const limiter = someArray[i].managerId;
+      for (let j = limiter; j >= 0 ; j--){
+          if (someArray[j].)
+      }
     }
   }
   console.log(tree);
