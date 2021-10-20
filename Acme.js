@@ -64,7 +64,7 @@ function findEmployeeByName(search, someArray) {
   }
 }
 
-//findEmployeeByName("larry", employees);
+findEmployeeByName("larry", employees);
 
 function findManagerFor(search, someArray) {
   for (let i = 0; i < someArray.length; i++) {
@@ -107,7 +107,7 @@ function findCoworkersFor(search, someArray) {
   console.log(coworkers);
 }
 
-//findCoworkersFor("larry", employees);
+findCoworkersFor("larry", employees);
 
 function findManagementChain(search, someArray) {
   const tree = [];
@@ -139,7 +139,7 @@ function findManagementChain(search, someArray) {
   return tree.reverse();
 }
 
-//console.log(findManagementChain("harpo", employees));
+console.log(findManagementChain("harpo", employees));
 
 //Solution below as discussed on 10/18/2021, study session after class
 
