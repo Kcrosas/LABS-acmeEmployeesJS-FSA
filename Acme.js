@@ -147,9 +147,9 @@ console.log(findManagementChain("harpo", employees));
 //Side-Goal: Practice the methods filter(), reduce(), and find()
 /*
 Findings: 
-1. Solution's generateManagementTree cannot be run by itself otherwise a maximum callstack error happens. This might be due to nothing stopping it as it continues to call itself. It's a function only meant to be used in generateDirectReports 
+1. Solution's generateManagementTree gets a maximum callstack error for some reason. Will need to investigate. 
 
-2. Currently, this seems to push a generic tree but the structure isn't correct. It pushes the employee object as ANOTHER element in an array rather than pushes the employee object as a value of the previous object's report key. 
+2. Solutions generateDirectReport produces an array of objects that follow the right order of management chain but it does not form a tree-like structure. Will need to investigate 
 
 */
 
@@ -159,8 +159,6 @@ const generateManagementTree = () => {
   //Then it returns an object with a manager who has no manager ID and passes itself as a key to reports
   return { ...manager, reports: generateManagementTree(manager, employees) };
 };
-
-//console.log(generateManagementTree());
 
 const generateDirectReports = (manager, employees) => {
   return employees
