@@ -64,7 +64,7 @@ function findEmployeeByName(search, someArray) {
   }
 }
 
-findEmployeeByName("larry", employees);
+//findEmployeeByName("larry", employees);
 
 function findManagerFor(search, someArray) {
   for (let i = 0; i < someArray.length; i++) {
@@ -84,7 +84,7 @@ function findManagerFor(search, someArray) {
   }
 }
 
-findManagerFor("larry", employees);
+//findManagerFor("larry", employees);
 
 function findCoworkersFor(search, someArray) {
   const coworkers = [];
@@ -103,10 +103,11 @@ function findCoworkersFor(search, someArray) {
       }
     }
   }
+  console.log(`Coworkers for ${search} are the following:`);
   console.log(coworkers);
 }
 
-findCoworkersFor("larry", employees);
+//findCoworkersFor("larry", employees);
 
 function findManagementChain(search, someArray) {
   const tree = [];
@@ -134,5 +135,43 @@ function findManagementChain(search, someArray) {
     console.log(limits);
     limits--;
   }*/
+  console.log(`The management chain for ${search} is:`);
   return tree.reverse();
 }
+
+//console.log(findManagementChain("harpo", employees));
+
+//Solution below as discussed on 10/18/2021, study session after class
+
+//Goal: Determine each step in the method chain and see how it affects the passed in argument
+//Side-Goal: Practice the methods filter(), reduce(), and find()
+/*
+Findings: 
+1. Solution's generateManagementTree cannot be run by itself otherwise a maximum callstack error happens. This might be due to nothing stopping it as it continues to call itself. It's a function only meant to be used in generateDirectReports 
+
+2. Currently, this seems to push a generic tree but the structure isn't correct. It pushes the employee object as ANOTHER element in an array rather than pushes the employee object as a value of the previous object's report key. 
+
+*/
+
+const generateManagementTree = () => {
+  //The following searches the passed in array of objects and searches for OBJECT that doesn't have the key of managerID then saves it to the variable manager
+  const manager = employees.find((employee) => !employee.managerID);
+  //Then it returns an object with a manager who has no manager ID and passes itself as a key to reports
+  return { ...manager, reports: generateManagementTree(manager, employees) };
+};
+
+//console.log(generateManagementTree());
+
+const generateDirectReports = (manager, employees) => {
+  return employees
+    .filter((employee) => employee.mangerID === manager.id)
+    .reduce((acc, employee) => {
+      acc.push({
+        ...employee,
+        reports: generateDirectReports(employee, employees),
+      });
+      return acc;
+    }, []);
+};
+
+console.log(generateDirectReports("moe", employees));
